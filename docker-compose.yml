@@ -1,0 +1,30 @@
+version: '3'
+services:
+  database:
+    container_name: postgres-csc2020
+    image: postgres:latest
+    ports: 
+      - "5433:5432"
+    volumes: 
+      - C:/Users/Cheta/data/postgres/csc2020:/data/postgres
+    env_file:
+      - csc2020.env
+
+  web:
+    container_name: nginx-csc2020
+    build:
+      context: .
+      dockerfile: JavaScript/nginx-primer/Dockerfile
+    ports:
+     - 80:80
+     - 443:443
+    extra_hosts:
+     - "app-server:192.168.219.226"
+
+  # jenkins:
+  #   image: jenkins/jenkins:lts
+  #   ports: 
+  #    - "8080:8080"
+  #    - "50000:50000"
+  #   volumes:
+  #    - C:/Users/Cheta/data/jenkins/home:/var/jenkins_home
