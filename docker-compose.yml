@@ -19,7 +19,7 @@ services:
      - 80:80
      - 443:443
     extra_hosts:
-     - "app-server:192.168.219.226"
+     - "app-server:10.9.70.98"
 
   # jenkins:
   #   image: jenkins/jenkins:lts
